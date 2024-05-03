@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title>Hytec Power Kiosk</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat:ital,wght@0,100;0,300;0,500;0,600;0,800;0,900;1,100;1,300;1,500;1,600;1,900&family=Poppins:wght@300;500;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section id="page1">
+      <div class="idle__animation">
+        <video id="idle__video" autoplay loop muted>
+          <source src="Asset/idle new.mp4" />
+        </video>
+        <a href="#page2" class="down"> Touch to Start</a>
+      </div>
+    </section>
+
+    <section id="page2">
+      <div class="background__animation2">
+        <video id="background__video2" autoplay loop muted>
+          <source src="Asset/background__rotated.mp4" />
+        </video>
+      </div>
+    </section>
+
+    <div class="content">
+
+        <img id="bar__image" src="Asset/bar.png" />
+      <div class="card__holder">
+        <div class="video__card"></div>
+      </div>
+      <!-- Card -->
+      <div class="card-container">
+        <div class="card">
+            <video autoplay loop muted>
+              <source src="Asset/Video Asset/The Sikorsky UH-60M BLACK HAWK Helicopter.mp4" type="video/mp4">
+              This kiosk does not support the file type.
+            </video>
+        </div>
+        <div class="card">
+          <video autoplay loop muted>
+            <source src="Asset/Video Asset/The Sikorsky UH-60M BLACK HAWK Helicopter.mp4" type="video/mp4">
+            This kiosk does not support the file type.
+          </video>
+        </div>
+        <div class="card">
+          <video autoplay loop muted>
+            <source src="Asset/Video Asset/The Sikorsky UH-60M BLACK HAWK Helicopter.mp4" type="video/mp4">
+            This kiosk does not support the file type.
+          </video>
+        </div>
+      </div>
+      <!-- Other contents -->
+      <div>
+        <div id="button__row">
+          <button>Developers</button>
+          <button>Partner Companies</button>
+        </div>
+        <img id="hytec__image" src="Asset/hyt.png" alt="Hytec Power Inc Logo" />
+      </div>
+    </div>
+
+    <script src="smoothtouch.js"></script>
+    <script src="idle.js"></script>
+    <script src="carousel.js"></script>
+  </body>
+</html>
