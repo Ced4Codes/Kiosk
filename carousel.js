@@ -1,47 +1,56 @@
-const cardContainer = document.querySelector('.card-container');
-let cards = Array.from(cardContainer.children);
+const carouselContainer = document.querySelector('.card-container');
+const cards = document.querySelectorAll('.card');
 const cardWidth = cards[0].offsetWidth;
-let currentIndex = 0; // Start at the first card
-let intervalId;
+const viewportWidth = window.innerWidth;
 
-function startCarousel() {
-  intervalId = setInterval(() => {
-    currentIndex++;
-    if (currentIndex >= cards.length) {
-      currentIndex = 0; // Reset to the first card
-      cardContainer.style.transition = 'none';
-      cardContainer.style.transform = `translateX(0)`;
-      setTimeout(() => {
-        cardContainer.style.transition = 'transform 0.5s ease-in-out';
-        cardContainer.style.transform = `translateX(-${cardWidth}px)`; // Move to the second card
-        currentIndex = 1; // Update currentIndex to second card
-      }, 50); // Small delay to ensure transition reset completes before starting the new one
-    } else {
-      cardContainer.style.transition = 'transform 0.5s ease-in-out';
-      cardContainer.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-    }
-  }, 5000); // Change card every 5 seconds
-}
+// Calculate margin width for the edges
+const marginPercentage = 0.3;
+const marginWidth = viewportWidth * marginPercentage;
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Clone the first and last cards to make the carousel infinite
-  const firstCardClone = cards[0].cloneNode(true);
-  const lastCardClone = cards[cards.length - 1].cloneNode(true);
-  cardContainer.insertBefore(lastCardClone, cardContainer.firstChild);
-  cardContainer.appendChild(firstCardClone);
-  
-  cards = Array.from(cardContainer.children);
-  cardContainer.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+let startX;
+let currentX = 0;
+let isDragging = false;
 
-  startCarousel();
+// Store initial card positions
+const initialCardPositions = Array.from(cards).map((card, index) => index * cardWidth);
+
+carouselContainer.addEventListener('touchstart', (e) => {
+  isDragging = true;
+  startX = e.touches[0].clientX;
+  carouselContainer.style.transition = 'none'; // Disable transition during drag
 });
 
-function handleTransitionEnd() {
-  if (currentIndex >= cards.length - 1) {
-    currentIndex = 1; // Reset to the first "real" card
-    cardContainer.style.transition = 'none';
-    cardContainer.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-  }
+carouselContainer.addEventListener('touchmove', (e) => {
+  if (!isDragging) return;
+  const touchX = e.touches[0].clientX;
+  const diffX = startX - touchX;
+  currentX += diffX; // Add instead of subtracting
+  handleCarousel();
+  startX = touchX;
+});
+
+
+carouselContainer.addEventListener('touchend', () => {
+  isDragging = false;
+  snapToNearestCard();
+});
+
+function handleCarousel() {
+  cards.forEach((card, index) => {
+    const cardPosition = index * cardWidth;
+    const newPosition = cardPosition - currentX;
+    const isVisible = newPosition + cardWidth > 0 && newPosition < viewportWidth;
+    card.style.transform = isVisible ? `translateX(${newPosition}px)` : 'translateX(-9999px)';
+  });
 }
 
-cardContainer.addEventListener('transitionend', handleTransitionEnd);
+function snapToNearestCard() {
+  const middleX = viewportWidth / 2;
+  const cardIndex = Math.round((currentX + middleX - marginWidth) / cardWidth);
+  const targetX = cardIndex * cardWidth - middleX + marginWidth;
+  currentX = targetX;
+  carouselContainer.style.transition = 'transform 1.5s ease'; // Enable transition
+  handleCarousel();
+}
+
+
