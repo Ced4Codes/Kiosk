@@ -30,6 +30,7 @@ body {
   width: 100vw;
   height: auto;
   z-index: -1;
+
 }
 
 
@@ -54,8 +55,9 @@ body {
   left: 0;
   width: 100vh; 
   height: 100vw; 
-  object-fit: cover; 
-  z-index: -1; 
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.10); 
 }
 
 .content {
@@ -239,7 +241,6 @@ button {
   box-sizing: border-box;
   text-align: center;
   transition: transform 0.4s;
-  box-shadow: 0 0 30px rgba(0,0,0,0.3);
   user-select: none;
   cursor: pointer;
   display: flex;
@@ -264,7 +265,7 @@ button {
   width: 10px;
   border-radius: 50%;
   cursor: pointer;
-  background-color: #010101;
+  background-color: #ffffff;
   margin: 15px;
   transition-duration: 0.2s;
 }
