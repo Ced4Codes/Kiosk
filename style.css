@@ -4,7 +4,7 @@ body {
   padding: 0px;
   font-family: "inria-sans";
   overflow-x: hidden;
-  overflow: show;
+  overflow: hidden;
 }
 
 .idle__animation {
@@ -204,5 +204,189 @@ button {
     height: 400px;
   }
 }
+
+
+/*slider*/
+.slider {
+  width: 100%;
+  margin-top: 8%;
+  margin-bottom: 4%;
+}
+
+.slider input {
+  display: none;
+}
+
+.testimonials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 350px;
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.testimonials .item {
+  width: 450px;
+  height: 300px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ebe9e9;
+  position: absolute;
+  border-radius: 10px;
+  top: 0;
+  box-sizing: border-box;
+  text-align: center;
+  transition: transform 0.4s;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonials .item video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dots label {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #010101;
+  margin: 15px;
+  transition-duration: 0.2s;
+}
+
+#t-1:checked ~ .dots label[for="t-1"],
+#t-2:checked ~ .dots label[for="t-2"],
+#t-3:checked ~ .dots label[for="t-3"],
+#t-4:checked ~ .dots label[for="t-4"],
+#t-5:checked ~ .dots label[for="t-5"] {
+  transform: scale(3);
+  background-color: #a71641;
+}
+
+#t-1:checked ~ .dots label[for="t-2"],
+#t-2:checked ~ .dots label[for="t-1"],
+#t-2:checked ~ .dots label[for="t-3"],
+#t-3:checked ~ .dots label[for="t-2"],
+#t-3:checked ~ .dots label[for="t-4"],
+#t-4:checked ~ .dots label[for="t-3"],
+#t-4:checked ~ .dots label[for="t-5"],
+#t-5:checked ~ .dots label[for="t-4"] {
+  transform: scale(1.5);
+}
+
+#t-1:checked ~ .testimonials label[for="t-5"] {
+  transform: translate3d(1200px, 0, -360px) rotateY(-45deg);
+}
+
+#t-1:checked ~ .testimonials label[for="t-4"],
+#t-2:checked ~ .testimonials label[for="t-5"] {
+  transform: translate3d(900px, 0, -270px) rotateY(-35deg);
+  z-index: 1;
+}
+
+#t-1:checked ~ .testimonials label[for="t-3"],
+#t-2:checked ~ .testimonials label[for="t-4"],
+#t-3:checked ~ .testimonials label[for="t-5"] {
+  transform: translate3d(600px, 0, -180px) rotateY(-25deg);
+  z-index: 2;
+}
+
+#t-1:checked ~ .testimonials label[for="t-2"],
+#t-2:checked ~ .testimonials label[for="t-3"],
+#t-3:checked ~ .testimonials label[for="t-4"],
+#t-4:checked ~ .testimonials label[for="t-5"] {
+  transform: translate3d(300px, 0, -90px) rotateY(-15deg);
+  z-index: 3;
+}
+
+#t-2:checked ~ .testimonials label[for="t-1"],
+#t-3:checked ~ .testimonials label[for="t-2"],
+#t-4:checked ~ .testimonials label[for="t-3"],
+#t-5:checked ~ .testimonials label[for="t-4"] {
+  transform: translate3d(-300px, 0, -90px) rotateY(15deg);
+  z-index: 3;
+}
+
+#t-3:checked ~ .testimonials label[for="t-1"],
+#t-4:checked ~ .testimonials label[for="t-2"],
+#t-5:checked ~ .testimonials label[for="t-3"] {
+  transform: translate3d(-600px, 0, -180px) rotateY(25deg);
+}
+
+#t-5:checked ~ .testimonials label[for="t-2"],
+#t-4:checked ~ .testimonials label[for="t-1"] {
+  transform: translate3d(-900px, 0, -270px) rotateY(35deg);
+}
+
+#t-5:checked ~ .testimonials label[for="t-1"] {
+  transform: translate3d(-1200px, 0, -360px) rotateY(45deg);
+}
+
+#t-1:checked ~ .testimonials label[for="t-1"],
+#t-2:checked ~ .testimonials label[for="t-2"],
+#t-3:checked ~ .testimonials label[for="t-3"],
+#t-4:checked ~ .testimonials label[for="t-4"],
+#t-5:checked ~ .testimonials label[for="t-4"],
+#t-5:checked ~ .testimonials label[for="t-5"] {
+  z-index: 4;
+}
+
+/* Popup */
+.popup {
+  display: none; /* This will be controlled via JS */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0; /* Start with hidden opacity */
+  transform: scale(0.8); /* Start with a smaller scale */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.popup.show {
+  display: flex; /* Show the popup */
+  opacity: 1; /* Fully visible */
+  transform: scale(1); /* Full scale */
+}
+
+.popup-content {
+  position: relative;
+  width: 100%;
+  max-width: 95vw;
+
+  
+}
+
+.popup-content video {
+  width: 100%;
+  height: auto;
+}
+
+
+
+
+
+
+
 
 

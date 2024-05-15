@@ -1,8 +1,8 @@
 const idleVideo = document.getElementById('idle__video');
 const idleAnimation = document.querySelector('.idle__animation');
 
-// Set the idle time in milliseconds (e.g., 1 minute)
-const idleTime = 1 * 60 * 1000; // 1 minute
+// Set the idle time in milliseconds (e.g., 1 minute and 30 seconds)
+const idleTime = 1.5 * 60 * 1000; // 1 minute and 30 seconds
 
 let timeout;
 
@@ -29,14 +29,34 @@ const startIdleTimer = () => {
 // Start the idle timer when the document is loaded
 document.addEventListener('DOMContentLoaded', startIdleTimer);
 
-// Reset the idle timer whenever there's user activity
+// Reset the idle timer whenever there's user activity (mousemove, keypress, or scroll)
 const resetIdleTimer = () => {
   // Clear the previous timeout
   clearTimeout(timeout);
-  // Restart the idle timer
+  // Restart the idle timer if no interaction occurs after the specified idle time
   timeout = setTimeout(resetIdleVideo, idleTime);
 };
 
-// Reset the idle timer whenever there's user activity
+// Handle swipe interaction
+document.addEventListener('swipe', resetIdleTimer);
+
+// Handle mousemove and keypress events
 document.addEventListener('mousemove', resetIdleTimer);
 document.addEventListener('keypress', resetIdleTimer);
+
+// Handle scroll event
+let isScrolling = false;
+window.addEventListener('scroll', () => {
+  isScrolling = true;
+  // Reset the idle timer if no interaction occurs after the specified idle time
+  resetIdleTimer();
+});
+
+// Listen for scroll stop event
+setInterval(() => {
+  if (isScrolling) {
+    isScrolling = false;
+    resetIdleTimer();
+  }
+}, 100);
+
