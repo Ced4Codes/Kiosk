@@ -4,11 +4,11 @@ body {
   padding: 0px;
   font-family: "inria-sans";
   overflow-x: hidden;
-  overflow: hidden;
+  overflow: auto;
 }
 
-.idle__animation {
 
+.idle__animation {
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -30,11 +30,9 @@ body {
   width: 100vw;
   height: auto;
   z-index: -1;
-
 }
 
-
-#start__button{
+#start__button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,20 +42,19 @@ body {
 .background__animation {
   position: absolute;
   width: 100%;
-  height: 100vh; 
+  height: 100vh;
   overflow: hidden;
-
 }
 
 #background__video {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vh; 
-  height: 100vw; 
+  width: 100vh;
+  height: 100vw;
   object-fit: cover;
   z-index: -1;
-  filter: brightness(0.10); 
+  filter: brightness(0.1);
 }
 
 .content {
@@ -75,7 +72,6 @@ body {
   height: 220px;
   width: 220px;
   margin-inline: auto;
-
 }
 
 .background__animation2 {
@@ -88,7 +84,7 @@ body {
   background-color: #161616;
   overflow: hidden;
   flex-direction: row;
-  z-index: 1; 
+  z-index: 1;
 }
 
 #background__video2 {
@@ -105,25 +101,23 @@ body {
   display: flex;
   justify-content: center;
   width: 100vw;
-  z-index: 10; 
+  z-index: 10;
 }
 
-#bar__image{
+#bar__image {
   display: flex;
   width: 100%;
 }
 
-
-#button__row{
+#button__row {
   display: flex;
   justify-content: center;
   margin-inline: auto;
   width: 100vw;
   text-align: center;
-
 }
 
-#logo__position{
+#logo__position {
   display: flex;
   margin-inline: auto;
   width: 100vw;
@@ -140,31 +134,31 @@ button {
   margin: 25px;
   font-size: 25px;
 }
-  
-.down{
+
+.down {
   position: absolute;
   margin-inline: auto;
   width: 100vw;
   text-align: center;
-  color: #fff ;
+  color: #fff;
   font-size: 1.5rem;
   font-weight: 600;
   text-decoration: none;
   top: 68%;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   animation: bounce 2s infinite;
 }
 
 @keyframes bounce {
-   0%{
+  0% {
     transform: translateY(100%);
-   }
-   50% {
+  }
+  50% {
     transform: translateY(0%);
-   }
-   100% {
+  }
+  100% {
     transform: translateY(100%);
-   }
+  }
 }
 
 /*Card */
@@ -176,15 +170,15 @@ button {
   scroll-behavior: smooth;
   border-radius: 8px;
   align-items: center;
-
-  
 }
 
 .card {
   flex: 0 0 auto; /* Ensure card width is based on content */
-  overflow: hidden; 
+  overflow: hidden;
   margin: 3px; /* Reduced margin for smaller spacing */
-  width: calc(100% - 6px); /* Set width to dynamically adjust based on viewport */
+  width: calc(
+    100% - 6px
+  ); /* Set width to dynamically adjust based on viewport */
   max-width: 800px; /* Set max-width for larger screens */
   height: 300px; /* Set height */
   background-color: #f9f9f9;
@@ -201,12 +195,13 @@ button {
 
 @media (min-width: 1200px) {
   .card {
-    max-width: calc(33.333% - 6px); /* Adjust max-width for even larger screens */
+    max-width: calc(
+      33.333% - 6px
+    ); /* Adjust max-width for even larger screens */
     margin: 3px; /* Reduced margin for smaller spacing */
     height: 400px;
   }
 }
-
 
 /*slider*/
 .slider {
@@ -385,4 +380,92 @@ button {
   height: 100%;
 }
 
+/* Overlay to dim the background */
+#dim-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity as needed for the dim effect */
+  z-index: 1000; /* Ensure it's above other content */
+  display: none; /* Initially hide it */
+}
 
+/* The prompt box styling */
+.promptBox {
+  width: 150px;
+  transform: translate(-50%, -50%);
+  position: fixed; /* Fixed positioning to center it over the whole screen */
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+  transition: 300ms;
+  pointer-events: none;
+  z-index: 1001; /* Ensure it's above the dim-overlay */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.tapperoo {
+  height: 48px;
+  width: 50px;
+  position: absolute;
+  top: calc(50% - 100px); /* Adjusted to align with the hand */
+  left: calc(50% + 0px); /* Adjusted to align with the hand */
+  border-radius: 100px;
+  background-color: #fff;
+  z-index: -1; /* Ensure it's behind other content */
+  animation: tapperoo 3s infinite;
+}
+
+@keyframes tapperoo {
+  0% {
+    height: 10%;
+    width: 25%;
+  }
+  50% {
+    height: 5%;
+    width: 35%;
+    opacity: 0;
+    transform: translate(-250%);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+#tap-gesture {
+  position: absolute;
+  transform: rotate(30deg);
+  animation: handMove 3s infinite;
+  z-index: 1; /* Ensure it's above tapperoo */
+}
+
+@keyframes handMove {
+  0% {
+    transform: rotate(30deg);
+  }
+  50% {
+    transform: translate(-60%, -10%) rotate(-30deg) scale(0.9);
+  }
+  100% {
+    transform: rotate(30deg);
+  }
+}
+
+/* Style for the paragraph inside the prompt box */
+.promptBox p {
+  margin-top: 280px; /* Adjust to position the text below the hand */
+  color: white;
+  font-size: 35px;
+  line-height: 1.5;
+  white-space: nowrap; /* Ensure the text stays in a single line */
+  overflow: hidden; /* Prevent overflow */
+  text-overflow: ellipsis; /* Add ellipsis if text overflows */
+}
