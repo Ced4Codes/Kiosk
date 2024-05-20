@@ -26,3 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initial idle timeout setup
   resetIdleTimeout();
 });
+
+function scrollToPage2() {
+  // Scroll to #page2
+  document.querySelector("#page2").scrollIntoView({ behavior: "smooth" });
+}

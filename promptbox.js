@@ -40,21 +40,14 @@ function createPromptBox() {
     }, 3000);
 }
 
-// Function to handle the click event on the "Touch to Start" link
-function handleStartClick(event) {
-    // Prevent the default action
-    event.preventDefault();
-
-    // Scroll to #page2
-    document.querySelector(event.target.getAttribute("href")).scrollIntoView({ behavior: "smooth" });
-
-    // Create the promptBox after scrolling to #page2
-    setTimeout(createPromptBox, 500); // Adjust the timeout as needed to match the scrolling duration
+// Function to handle the click event on the idle__animation section
+function handleIdleAnimationClick(event) {
+    // Delay the creation of the promptBox by 0.5 seconds
+    setTimeout(createPromptBox, 500);
 }
 
-// Attach the click event listener to the "Touch to Start" link
-document.querySelector("a.down").addEventListener("click", handleStartClick);
+// Attach the click event listener to the idle__animation section
+document.querySelector(".idle__animation").addEventListener("click", handleIdleAnimationClick);
 
 // Add the dim overlay element to the body
 document.body.insertAdjacentHTML('beforeend', '<div id="dim-overlay"></div>');
-

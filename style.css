@@ -4,7 +4,8 @@ body {
   padding: 0px;
   font-family: "inria-sans";
   overflow-x: hidden;
-  overflow: auto;
+  overflow: hidden;
+  background-color: #c4c4c4;
 }
 
 
@@ -161,52 +162,11 @@ button {
   }
 }
 
-/*Card */
-.card-container {
-  display: flex;
-  overflow: hidden;
-  width: 100%;
-  transition: transform 1s ease;
-  scroll-behavior: smooth;
-  border-radius: 8px;
-  align-items: center;
-}
-
-.card {
-  flex: 0 0 auto; /* Ensure card width is based on content */
-  overflow: hidden;
-  margin: 3px; /* Reduced margin for smaller spacing */
-  width: calc(
-    100% - 6px
-  ); /* Set width to dynamically adjust based on viewport */
-  max-width: 800px; /* Set max-width for larger screens */
-  height: 300px; /* Set height */
-  background-color: #f9f9f9;
-  border-radius: 8px;
-}
-
-@media (min-width: 768px) {
-  .card {
-    max-width: calc(50% - 6px); /* Adjust max-width for larger screens */
-    margin: 3px; /* Reduced margin for smaller spacing */
-    height: 400px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .card {
-    max-width: calc(
-      33.333% - 6px
-    ); /* Adjust max-width for even larger screens */
-    margin: 3px; /* Reduced margin for smaller spacing */
-    height: 400px;
-  }
-}
 
 /*slider*/
 .slider {
   width: 100%;
-  margin-top: 8%;
+  margin-top: 5%;
   margin-bottom: 4%;
 }
 
@@ -219,19 +179,20 @@ button {
   align-items: center;
   justify-content: center;
   position: relative;
-  min-height: 350px;
+  min-height: 410px;
   perspective: 1000px;
   overflow: hidden;
 }
 
 .testimonials .item {
-  width: 450px;
-  height: 300px;
+  width: 570px;
+  height: 350px;
   padding: 10px;
-  border-radius: 5px;
-  background-color: #ebe9e9;
+  background: rgba(255, 255, 255, 0.4); /* Increased opacity for better contrast */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Slightly darker border for better visibility */
   position: absolute;
-  border-radius: 10px;
   top: 0;
   box-sizing: border-box;
   text-align: center;
@@ -242,6 +203,7 @@ button {
   align-items: center;
   justify-content: center;
 }
+
 
 .testimonials .item video {
   width: 100%;
@@ -260,7 +222,7 @@ button {
   width: 10px;
   border-radius: 50%;
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: #686868;
   margin: 15px;
   transition-duration: 0.2s;
 }
