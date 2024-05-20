@@ -5,7 +5,6 @@ body {
   font-family: "inria-sans";
   overflow-x: hidden;
   overflow: hidden;
-  background-color: #c4c4c4;
 }
 
 
@@ -42,20 +41,20 @@ body {
 
 .background__animation {
   position: absolute;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
 }
 
 #background__video {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
-  width: 100vh;
-  height: 100vw;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
   z-index: -1;
-  filter: brightness(0.1);
+  filter: brightness(0.5);
 }
 
 .content {
@@ -73,41 +72,6 @@ body {
   height: 220px;
   width: 220px;
   margin-inline: auto;
-}
-
-.background__animation2 {
-  position: inherit;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  align-content: flex-start;
-  background-color: #161616;
-  overflow: hidden;
-  flex-direction: row;
-  z-index: 1;
-}
-
-#background__video2 {
-  position: absolute;
-  z-index: 0;
-  padding: 0px;
-  margin: 0px;
-  width: 100.7%;
-  height: auto;
-  overflow: hidden;
-}
-
-.bar {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-  z-index: 10;
-}
-
-#bar__image {
-  display: flex;
-  width: 100%;
 }
 
 #button__row {
@@ -166,7 +130,8 @@ button {
 /*slider*/
 .slider {
   width: 100%;
-  margin-top: 5%;
+  padding-top: 10%;
+  margin-top: 0%;
   margin-bottom: 4%;
 }
 
@@ -179,7 +144,7 @@ button {
   align-items: center;
   justify-content: center;
   position: relative;
-  min-height: 410px;
+  min-height: 360px;
   perspective: 1000px;
   overflow: hidden;
 }
@@ -188,21 +153,24 @@ button {
   width: 570px;
   height: 350px;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.4); /* Increased opacity for better contrast */
-  backdrop-filter: blur(10px); /* Apply blur effect */
-  -webkit-backdrop-filter: blur(10px); /* For Safari support */
-  border: 1px solid rgba(255, 255, 255, 0.5); /* Slightly darker border for better visibility */
+  background: rgba(255, 255, 255, 0.8); /* Increased opacity for a whiter effect */
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%); /* For Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.6); /* Slightly darker border for better visibility */
   position: absolute;
   top: 0;
   box-sizing: border-box;
   text-align: center;
-  transition: transform 0.4s;
+  transition: transform 0.4s, background 0.4s;
   user-select: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
+
+
 
 
 .testimonials .item video {
@@ -222,7 +190,7 @@ button {
   width: 10px;
   border-radius: 50%;
   cursor: pointer;
-  background-color: #686868;
+  background-color: #ffffff;
   margin: 15px;
   transition-duration: 0.2s;
 }
