@@ -7,6 +7,13 @@ body {
   overflow: hidden;
 }
 
+#idle__video.portrait {
+  transform: rotate(90deg);
+  width: 100vw;  /* Adjust width and height to fit the rotated video */
+  height: 100vh;
+  scale: 2;
+}
+
 
 .idle__animation {
   position: relative;
@@ -126,7 +133,6 @@ button {
   }
 }
 
-
 /*slider*/
 .slider {
   width: 100%;
@@ -169,9 +175,6 @@ button {
   justify-content: center;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
-
-
-
 
 .testimonials .item video {
   width: 100%;
@@ -280,7 +283,7 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black background */
+  background-color: rgba(0, 0, 0, 0.80); /* semi-transparent black background */
   justify-content: center;
   align-items: center;
   z-index: 9999; /* Ensure the popup is displayed in front */
@@ -308,6 +311,19 @@ button {
 .popup-video {
   width: 100%;
   height: 100%;
+}
+
+@media (max-width: 1080px){
+  .down{
+    font-size: 3rem;
+  }
+  .testimonials{
+    margin-top: 50%;
+  }
+
+  #hytec__image{
+    margin-top: 48%;
+  }
 }
 
 /* Overlay to dim the background */

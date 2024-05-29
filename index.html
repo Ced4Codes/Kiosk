@@ -17,13 +17,13 @@
   </head>
   <body>
     <section id="page1">
-      <div class="idle__animation" onclick="scrollToPage2()">
-        <video id="idle__video" autoplay loop muted>
-          <source src="Asset/idle new.mp4" />
-        </video>
-        <p class="down">Touch to Start</p>
-      </div>
-    </section>
+          <div class="idle__animation" onclick="scrollToPage2()">
+      <video id="idle__video" autoplay loop muted>
+        <source id="videoSource" src="Asset/idle new.mp4" />
+      </video>
+      <p class="down">Touch to Start</p>
+    </div>
+  </section>
 
     <div class="page__2">
       <section id="page2">
@@ -125,10 +125,10 @@
       </div>
     </div>
     <!-- Scripts -->
-    <script src="smoothtouch.js"></script>
     <script src="idle.js"></script>
     <script src="swipe.js"></script>
     <script src="popup.js"></script>
     <script src="promptbox.js"></script>
+    <script src="respond.js"></script>
   </body>
 </html>
